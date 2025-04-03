@@ -1,0 +1,17 @@
+{{page-title "AddMovie"}}
+<div class="container">
+  <h1 class="main-title">Add New Movie</h1>
+  
+  <AddMovieForm
+    @newTitle={{this.newTitle}}
+    @updateTitle={{this.updateTitle}}
+    @newDirector={{this.newDirector}}
+    @updateDirector={{this.updateDirector}}
+    @newReleaseDate={{this.newReleaseDate}}
+    @updateReleaseDate={{this.updateReleaseDate}}
+    @addMovie={{this.addMovie}}
+    @cancel={{this.cancel}}
+  />
+
+</div>
+{{outlet}}

@@ -1,0 +1,13 @@
+<div class="application-container"> 
+   {{outlet}}
+  <div class="flash-messages-container">
+    {{#each this.flashMessages.queue as |flash|}}
+      <div class="flash-message {{flash.type}}" >
+        <p>{{flash.message}}</p>
+        <button class="flash-close-button" type="button" {{on-click-outside (fn this.removeFlashMessage flash)}} {{on "click" (fn this.removeFlashMessage flash)}}>×</button>
+      </div>
+    {{/each}}
+  </div>
+</div>
+
+<BasicDropdownWormhole />

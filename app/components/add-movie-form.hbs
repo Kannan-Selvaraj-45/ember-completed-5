@@ -1,0 +1,36 @@
+<section class="add-section">
+  <div class="form-flex">
+    <input
+      type="text"
+      id="title"
+      placeholder="Movie title"
+      {{on "input" @updateTitle}}
+      value={{@newTitle}}
+    />
+    <input
+      type="text"
+      id="director"
+      placeholder="Director name"
+      {{on "input" @updateDirector}}
+      value={{@newDirector}}
+    />
+    <input
+      type="date"
+      id="releaseDate"
+      placeholder="Release date"
+      {{on "input" @updateReleaseDate}}
+      value={{@newReleaseDate}}
+    />
+    <button class="save-btn" type="button" {{on "click" @addMovie}}>
+      Add Movie
+    </button>
+    <div>
+    <button type="button" {{on "click" @cancel}} >Cancel</button>
+  </div>
+  </div>
+ 
+</section>
+
+
+
+ 
