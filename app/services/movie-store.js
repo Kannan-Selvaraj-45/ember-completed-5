@@ -22,8 +22,8 @@ export default class MovieStoreService extends Service {
 
     this.movies = [...this.movies, { id: newId, title, director, releaseDate }];
 
-    console.log('Movie added:', { id: newId, title, director, releaseDate });
-    console.log('Current movies:', this.movies);
+    // console.log('Movie added:', { id: newId, title, director, releaseDate });
+    // console.log('Current movies:', this.movies);
     this.flashMessages.success('New movie added Successfully!');
     return true;
   }
