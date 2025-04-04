@@ -1,4 +1,4 @@
-/* Theme 3: Minimalist Light Theme - Clean & Simple */
+ 
 body {
   font-family: 'Inter', 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
   background: #ffffff;
@@ -14,7 +14,7 @@ body {
 }
  
 .container {
-  max-width: 1100px;
+  max-width: 1000px;
   min-height: 100vh;
   padding: 2rem;
   margin: 0 auto;
@@ -186,7 +186,7 @@ button {
   gap: 1rem;
 }
  
-/* Preserving dropdown styles as requested */
+ 
 .ember-power-select-trigger {
   border-color: #64A5ED;
   border-radius: 0;
@@ -384,7 +384,7 @@ input[type="checkbox"]:checked::after {
   max-height: 600px;
 }
 
-/* Preserving calendar styles as requested */
+ 
 .date-picker-container {
   position: relative;
 }
@@ -485,7 +485,7 @@ input[type="checkbox"]:checked::after {
   margin-bottom: 2rem;
 }
 
-/* Responsive adjustments */
+ 
 @media (max-width: 768px) {
   .main-title {
     font-size: 2rem;
@@ -523,12 +523,12 @@ input[type="checkbox"]:checked::after {
   }
 }
 
-/* Add smooth scrolling */
+ 
 html {
   scroll-behavior: smooth;
 }
 
-/* Add focus styles for accessibility */
+ 
 *:focus-visible {
   outline: 2px solid #333333;
   outline-offset: 2px;
