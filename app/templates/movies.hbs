@@ -1,8 +1,6 @@
 <div class="container">
   <h1 class="main-title">Movie Collection</h1>
-
   <SearchMovies @updateSearch={{this.updateSearch}} />
-
   <MovieTable
     @deleteSelected={{this.deleteSelected}}
     @filteredMovies={{this.filteredMovies}}
@@ -13,11 +11,9 @@
     @options={{this.options}}
     @chooseDestination={{this.chooseDestination}}
   />
-
   <section class="actions">
     <h2 class="new-movie-head">Add a new movie to the list</h2>
     <button class="add-movie-button" type="button" {{on "click" this.navigateToAddMovie}} {{on-key "Ctrl+Enter" this.navigateToAddMovie}}>Add
       Movie</button>
   </section>
-  
 </div>

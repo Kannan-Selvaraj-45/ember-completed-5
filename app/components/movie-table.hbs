@@ -11,81 +11,85 @@
       {{name}}
     </PowerSelect>
   </div>
+
   <div class="table-container">
-    <table>
-      <thead>
-        <tr>
-          <th class="select-column">
-            <span class="sr-only">Select</span>
-          </th>
-          <th>ID</th>
-          <th>Title</th>
-          <th>Director</th>
-          <th>Release Date</th>
-          <th>Edit</th>
-          <th class="actions-column">Actions</th>
-        </tr>
-      </thead>
+    <LiquidSpacer @growDuration={{250}}>
+      <table>
+        <thead>
+          <tr>
+            <th class="select-column">
+              <span class="sr-only">Select</span>
+            </th>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Director</th>
+            <th>Release Date</th>
+            <th>Edit</th>
+            <th class="actions-column">Actions</th>
+          </tr>
+        </thead>
 
-      {{#if (gt @filteredMovies.length 0)}}
+        {{#if (gt @filteredMovies.length 0)}}
 
-        <tbody id="movieList">
-          {{#each @filteredMovies as |movie|}}
-            <tr>
-              <td class="select-column">
-                <label class="checkbox-container">
-                  <input
-                    type="checkbox"
-                    value={{movie.id}}
-                    {{on "change" (fn @toggleSelect movie.id)}}
-                  />
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td>{{movie.id}}</td>
+          <tbody id="movieList">
+            {{#each @filteredMovies as |movie|}}
+              <tr>
+                <td class="select-column">
+                  <label class="checkbox-container">
+                    <input
+                      type="checkbox"
+                      value={{movie.id}}
+                      {{on "change" (fn @toggleSelect movie.id)}}
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </td>
+                <td>{{movie.id}}</td>
 
-              {{#if (not-eq movie.title "")}}
-                <td>{{movie.title}}</td>
-              {{else}}
-                <td class="missing-data">No title found!</td>
-              {{/if}}
+                {{#if (not-eq movie.title "")}}
+                  <td>{{movie.title}}</td>
+                {{else}}
+                  <td class="missing-data">No title found!</td>
+                {{/if}}
 
-              {{#if (not-eq movie.director "")}}
-                <td>{{movie.director}}</td>
-              {{else}}
-                <td class="missing-data">Director name not found!</td>
-              {{/if}}
+                {{#if (not-eq movie.director "")}}
+                  <td>{{movie.director}}</td>
+                {{else}}
+                  <td class="missing-data">Director name not found!</td>
+                {{/if}}
 
-              {{#if (not-eq movie.releaseDate "")}}
-                <td>{{movie.releaseDate}}</td>
-              {{else}}
-                <td class="missing-data">No date found!</td>
-              {{/if}}
+                {{#if (not-eq movie.releaseDate "")}}
+                  <td>{{movie.releaseDate}}</td>
+                {{else}}
+                  <td class="missing-data">No date found!</td>
+                {{/if}}
 
-              <td>
-                <button
-                  class="edit-icon"
-                  type="button"
-                  {{on "click" (fn @editMovie movie.id)}}
-                >✏️</button>
-              </td>
-              <td class="actions-column">
-                <button
-                  class="delete-btn"
-                  type="button"
-                  {{on "click" (fn @deleteMovie movie.id)}}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          {{/each}}
-        </tbody>
-      {{else}}
-        <tr>
-          <td colspan="6" class="empty-state">No movies added yet</td>
-        </tr>
-      {{/if}}
-    </table>
+                <td>
+                  <button
+                    class="edit-icon"
+                    type="button"
+                    {{on "click" (fn @editMovie movie.id)}}
+                  >✏️</button>
+                </td>
+                <td class="actions-column">
+                  <button
+                    class="delete-btn"
+                    type="button"
+                    {{on "click" (fn @deleteMovie movie.id)}}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        {{else}}
+          <tr>
+            <td colspan="6" class="empty-state">No movies added yet</td>
+          </tr>
+        {{/if}}
+      </table>
+    </LiquidSpacer>
   </div>
+
 </section>

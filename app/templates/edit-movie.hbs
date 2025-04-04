@@ -1,28 +1,64 @@
 {{page-title "Edit Movie"}}
 <div class="container">
-  <h1 class="main-title">Edit Movie</h1>
-  
-  <div class="form-flex">
-    <input
-      type="text"
-      placeholder="Movie title"
-      value={{this.title}}
-      {{on "input" this.updateTitle}}
-    />
-    <input
-      type="text"
-      placeholder="Director name"
-      value={{this.director}}
-      {{on "input" this.updateDirector}}
-    />
-    <input
-      type="date"
-      placeholder="Release date"
-      value={{this.releaseDate}}
-      {{on "input" this.updateReleaseDate}}
-    />
-    <button type="button" {{on "click" this.saveChanges}}  class="save-btn" >Save Changes</button>
-    <button type="button" {{on "click" this.cancel}}>Cancel</button>
-  </div>
+  <section class="add-section">
+    <h3 class="new-movie-head">Edit Movie</h3>
+    <div class="form-flex">
+      <div class="input-group">
+        <input
+          type="text"
+          id="title"
+          placeholder="Movie title"
+          value={{this.title}}
+          {{on "input" this.updateTitle}}
+        />
+      </div>
+      <div class="input-group">
+        <input
+          type="text"
+          id="director"
+          placeholder="Director name"
+          value={{this.director}}
+          {{on "input" this.updateDirector}}
+        />
+      </div>
+      <div class="date-picker-container">
+        <div class="date-input-wrapper">
+          <input
+            type="text"
+            id="releaseDate"
+            placeholder="Release date"
+            value={{this.releaseDate}}
+            readonly
+            {{on "click" this.toggleCalendar}}
+          />
+          <button type="button" {{on "click" this.toggleCalendar}}>
+            📅
+          </button>
+        </div>
+        {{#if this.isCalendarOpen}}
+          <div class="calendar-popup" {{on-click-outside this.toggleCalendar}}>
+            <PowerCalendar
+              @center={{this.center}}
+              @onCenterChange={{perform this.updateMonth}}
+              @selected={{this.selected}}
+              @onSelect={{this.onSelect}}
+              as |calendar|
+            >
+              <div class={{if calendar.loading "loading-spinner-overlay"}}>
+                <calendar.Nav />
+                <calendar.Days />
+              </div>
+            </PowerCalendar>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+    <div class="form-actions"> 
+      <button type="button" {{on "click" this.cancel}}>Cancel</button>
+      <button class="save-btn" type="button" {{on "click" this.saveChanges}}>
+        Save Changes
+      </button>
+    </div>
+  </section>
 </div>
 {{outlet}}

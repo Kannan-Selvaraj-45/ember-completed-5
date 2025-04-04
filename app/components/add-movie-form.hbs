@@ -1,36 +1,65 @@
+ 
 <section class="add-section">
+  <h3 class="new-movie-head">Add New Movie</h3>
+  
   <div class="form-flex">
-    <input
-      type="text"
-      id="title"
-      placeholder="Movie title"
-      {{on "input" @updateTitle}}
-      value={{@newTitle}}
-    />
-    <input
-      type="text"
-      id="director"
-      placeholder="Director name"
-      {{on "input" @updateDirector}}
-      value={{@newDirector}}
-    />
-    <input
-      type="date"
-      id="releaseDate"
-      placeholder="Release date"
-      {{on "input" @updateReleaseDate}}
-      value={{@newReleaseDate}}
-    />
-    <button class="save-btn" type="button" {{on "click" @addMovie}}>
+    <div class="input-group">
+      <input
+        type="text"
+        id="title"
+        placeholder="Movie title"
+        {{on "input" @updateTitle}}
+        value={{@newTitle}}
+      />
+    </div>
+    
+    <div class="input-group">
+      <input
+        type="text"
+        id="director"
+        placeholder="Director name"
+        {{on "input" @updateDirector}}
+        value={{@newDirector}}
+      />
+    </div>
+
+    <div class="date-picker-container">
+      <div class="date-input-wrapper">
+        <input
+          type="text"
+          id="releaseDate"
+          placeholder="Release date"
+          value={{@newReleaseDate}}
+          readonly
+        />
+        <button type="button" {{on "click" @toggleCalendar}}>
+          📅
+        </button>
+      </div>
+
+      {{#if @isCalendarOpen}}
+        <div class="calendar-popup" {{on-click-outside @toggleCalendar}}>
+          <PowerCalendar
+            @center={{@center}}
+            @onCenterChange={{perform @updateMonth}}
+            @selected={{@selected}}
+            @onSelect={{@onSelect}}
+            as |calendar|
+          >
+            <div class={{if calendar.loading "loading-spinner-overlay"}}>
+              <calendar.Nav />
+              <calendar.Days />
+            </div>
+          </PowerCalendar>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+  
+  <div class="form-actions"> 
+    <button type="button" {{on "click" @cancel}} {{on-key "Escape" @cancel}}>Cancel</button>
+    <button class="save-btn" type="button" {{on "click" @addMovie}} {{on-key "Ctrl+Enter" @addMovie}}>
       Add Movie
     </button>
-    <div>
-    <button type="button" {{on "click" @cancel}} >Cancel</button>
   </div>
-  </div>
- 
 </section>
-
-
-
- 

@@ -1,4 +1,4 @@
- import Route from '@ember/routing/route';
+import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
 export default class EditMovieRoute extends Route {
@@ -22,5 +22,6 @@ export default class EditMovieRoute extends Route {
     controller.title = model.title;
     controller.director = model.director;
     controller.releaseDate = model.releaseDate;
+    controller.setupCalendar();
   }
 }

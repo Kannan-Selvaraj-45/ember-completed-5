@@ -3,7 +3,7 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
-
+import { task, timeout } from 'ember-concurrency';
 export default class AddMovieController extends Controller {
   @service router;
   @service movieStore;
@@ -11,6 +11,34 @@ export default class AddMovieController extends Controller {
   @tracked newTitle = '';
   @tracked newDirector = '';
   @tracked newReleaseDate = '';
+  @tracked selected = new Date();
+  @tracked center;
+  @tracked isCalendarOpen;
+
+  @action
+  toggleCalendar(){
+    this.isCalendarOpen=!this.isCalendarOpen;
+  }
+
+  @action
+  onSelect(selected) {
+    this.selected = selected.date;
+    this.newReleaseDate=this.formatDate(this.selected);
+    this.isCalendarOpen=!this.isCalendarOpen;
+  }
+  formatDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');  
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+   @(task(function* ({ date }) {
+      yield timeout(100);
+      this.center = date;
+    }).drop())
+    updateMonth;
+
 
   @action
   updateTitle(event) {
@@ -22,10 +50,7 @@ export default class AddMovieController extends Controller {
     this.newDirector = event.target.value;
   }
   
-  @action
-  updateReleaseDate(event) {
-    this.newReleaseDate = event.target.value;
-  }
+    
 
   @action
   addMovie() {

@@ -1,7 +1,5 @@
 {{page-title "AddMovie"}}
 <div class="container">
-  <h1 class="main-title">Add New Movie</h1>
-  
   <AddMovieForm
     @newTitle={{this.newTitle}}
     @updateTitle={{this.updateTitle}}
@@ -11,7 +9,12 @@
     @updateReleaseDate={{this.updateReleaseDate}}
     @addMovie={{this.addMovie}}
     @cancel={{this.cancel}}
+    @center={{this.center}}
+    @updateMonth={{this.updateMonth}}
+    @selected={{this.selected}}
+    @onSelect={{this.onSelect}}
+    @isCalendarOpen={{this.isCalendarOpen}}
+    @toggleCalendar={{this.toggleCalendar}}
   />
-
 </div>
 {{outlet}}
