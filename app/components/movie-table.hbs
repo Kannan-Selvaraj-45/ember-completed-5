@@ -10,6 +10,8 @@
     >
       {{name}}
     </PowerSelect>
+
+    <button class="delete-button {{if (or @deleteAll.isRunning @deleteSelected.isRunning) 'highlight-cancel'}}" {{on "click" @undoAll}}  >Cancel</button>
   </div>
  
   <div class="table-container">
@@ -32,6 +34,17 @@
         {{#if (gt @filteredMovies.length 0)}}
 
           <tbody id="movieList">
+           {{#if (or @deleteAll.isRunning @deleteSelected.isRunning)}}
+              <tr class="loading-row">
+                <td colspan="12">
+                  <div class="spinner-container">
+                    <div class="spinner"></div>
+                    <div class="loading-text">Deleting movies...</div>
+                  </div>
+                </td>
+              </tr>
+            {{else}}
+           
             {{#each @filteredMovies as |movie|}}
               <tr>
                 <td class="select-column">
@@ -83,10 +96,11 @@
                 </td>
               </tr>
             {{/each}}
+            {{/if}}
           </tbody>
         {{else}}
           <tr>
-            <td colspan="6" class="empty-state">No movies added yet</td>
+            <td colspan="12" class="empty-state">No movies added yet</td>
           </tr>
         {{/if}}
       </table>

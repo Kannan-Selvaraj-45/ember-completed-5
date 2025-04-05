@@ -11,9 +11,10 @@
     @options={{this.options}}
     @chooseDestination={{this.chooseDestination}}
     @deleteAll={{this.deleteAll}}
+    @undoAll={{this.undoAll}}
   />
   <section class="actions">
-    <h2 class="new-movie-head">Add a new movie to the list</h2>
+    <h3 class="new-movie-head">Add a new movie to the list</h3>
     <button class="add-movie-button" type="button" {{on "click" this.navigateToAddMovie}} {{on-key "Ctrl+Enter" this.navigateToAddMovie}}>Add
       Movie</button>
   </section>
