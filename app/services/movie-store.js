@@ -7,9 +7,9 @@ import { inject as service } from '@ember/service';
 export default class MovieStoreService extends Service {
   @service flashMessages;
   @tracked movies = [
-    { id: 1, title: 'Interstellar (2014)', director: 'Nolan', releaseDate: '2014-11-07' },
-    { id: 2, title: 'Avengers (2012)', director: 'Joss Whedon', releaseDate: '2012-05-04' },
-    { id: 3, title: 'Inception (2010)', director: 'Christopher Nolan', releaseDate: '2010-07-16' },
+    { id: 1, title: 'Interstellar ', director: 'Nolan', releaseDate: '2014-11-07' },
+    { id: 2, title: 'Avengers ', director: 'Joss Whedon', releaseDate: '2012-05-04' },
+    { id: 3, title: 'Inception ', director: 'Christopher Nolan', releaseDate: '2010-07-16' },
     { id: 4, title: '', director: 'Christopher Nolan', releaseDate: '' },
     { id: 5, title: 'Dune', director: '', releaseDate: '2021-10-22' },
   

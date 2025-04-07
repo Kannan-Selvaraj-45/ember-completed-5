@@ -1,6 +1,10 @@
 {{page-title "Edit Movie"}}
- 
-<div class="container">
+
+<div
+  class="container"
+  {{on-key "Escape" this.cancel}}
+  {{on-key "Enter" this.saveChanges}}
+>
   <section class="add-section">
     <h3 class="main-title">Edit Movie</h3>
     <div class="form-flex">
@@ -54,7 +58,7 @@
         {{/if}}
       </div>
     </div>
-    <div class="form-actions"> 
+    <div class="form-actions">
       <button type="button" {{on "click" this.cancel}}>Cancel</button>
       <button class="save-btn" type="button" {{on "click" this.saveChanges}}>
         Save Changes

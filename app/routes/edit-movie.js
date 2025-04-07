@@ -1,11 +1,9 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
-
 export default class EditMovieRoute extends Route {
   @service movieStore;
   @service flashMessages;
   @service router;
-
   model(params) {
     const movie = this.movieStore.movies.find(
       (m) => m.id === parseInt(params.id)
@@ -16,7 +14,6 @@ export default class EditMovieRoute extends Route {
     }
     return movie;
   }
-
   setupController(controller, model) {
     super.setupController(controller, model);
     controller.title = model.title;

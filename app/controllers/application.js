@@ -16,6 +16,7 @@ export default class ApplicationController extends Controller {
       this.isDarkMode = true
       document.documentElement.classList.add("dark-theme")
     }
+    // console.log(savedTheme)
   }
 
   @action
