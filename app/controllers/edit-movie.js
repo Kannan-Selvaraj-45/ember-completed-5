@@ -55,11 +55,13 @@
       return `${year}-${month}-${day}`;
     }
 
-    @(task(function* ({ date }) {
+   
+
+    @task({drop:true})
+    *updateMonth({ date }){
       yield timeout(100);
-      this.center = date;
-    }).drop())
-    updateMonth;
+        this.center=date;
+    }
 
     @action
     updateTitle(event) {

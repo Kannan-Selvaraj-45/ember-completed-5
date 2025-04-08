@@ -12,7 +12,6 @@ export default class MovieStoreService extends Service {
     { id: 3, title: 'Inception ', director: 'Christopher Nolan', releaseDate: '2010-07-16' },
     { id: 4, title: '', director: 'Christopher Nolan', releaseDate: '' },
     { id: 5, title: 'Dune', director: '', releaseDate: '2021-10-22' },
-  
   ];
   
 
@@ -33,7 +32,6 @@ export default class MovieStoreService extends Service {
   @action
   deleteMovie(id) {
     this.movies = this.movies.filter((movie) => movie.id !== id);
-     
   }
 
   @action

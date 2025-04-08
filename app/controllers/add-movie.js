@@ -20,17 +20,7 @@ export default class AddMovieController extends Controller {
   @action
   focusInput(element){
    element.focus();
-  }
-  
- 
-  
-  @onKey('ArrowRight')
-  moveFocus(){
-    window.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('director').focus();
-    })
-  }
-    
+  }    
   
   @action
   toggleCalendar() {
@@ -53,12 +43,9 @@ export default class AddMovieController extends Controller {
   }
 
   @task({ drop: true })
-  *updateMonth({ date }) {
+  *updateMonth({ date }) { 
     yield timeout(100);
-    this.center = date;
-    if (this.isDestroyed) {
-      return;
-    }
+    this.center = date; 
   }
   
 
