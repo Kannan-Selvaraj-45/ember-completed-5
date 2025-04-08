@@ -10,14 +10,7 @@
     >
       {{name}}
     </PowerSelect>
-    <button
-      class="delete-button
-        {{if
-          (or @deleteAll.isRunning @deleteSelected.isRunning)
-          'highlight-cancel'
-        }}"
-      {{on "click" @undoAll}}
-    >Cancel</button>
+
   </div>
   <div class="table-container">
     <LiquidSpacer @growDuration={{250}}>
@@ -44,7 +37,16 @@
                     <div class="spinner"></div>
                     <div class="loading-text">Deleting movies...</div>
                   </div>
+                  <button
+                    class="delete-button
+                      {{if
+                        (or @deleteAll.isRunning @deleteSelected.isRunning)
+                        'highlight-cancel'
+                      }}"
+                    {{on "click" @undoAll}}
+                  >Cancel</button>
                 </td>
+
               </tr>
             {{else}}
               {{#each @filteredMovies as |movie|}}
@@ -70,7 +72,6 @@
                   {{else}}
                     <td class="missing-data">Director name not found!</td>
                   {{/if}}
-
                   {{#if (not-eq movie.releaseDate "")}}
                     <td>{{movie.releaseDate}}</td>
                   {{else}}
@@ -104,5 +105,4 @@
       </table>
     </LiquidSpacer>
   </div>
-
 </section>

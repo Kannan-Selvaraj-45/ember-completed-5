@@ -8,12 +8,16 @@ export default class MoviesController extends Controller {
   @service router;
   @service movieStore;
   @service flashMessages;
-  
   @tracked searched = '';
   @tracked selectedMovies = [];
   @tracked destination = "Delete Options";
   
   options = ["All", "Selected"];
+ 
+   @action
+   focusInput(element){
+    element.focus();
+   }
 
   @action
   chooseDestination(selectedOption) {

@@ -1,6 +1,6 @@
 <div class="container">
   <h1 class="main-title">Movie Collection</h1>
-  <SearchMovies @updateSearch={{this.updateSearch}} />
+  <SearchMovies @updateSearch={{this.updateSearch}} @focusInput={{this.focusInput}}/>
   <MovieTable
     @deleteSelected={{this.deleteSelected}}
     @filteredMovies={{this.filteredMovies}}
@@ -12,6 +12,7 @@
     @chooseDestination={{this.chooseDestination}}
     @deleteAll={{this.deleteAll}}
     @undoAll={{this.undoAll}}
+    
   />
   <section class="actions">
     <h3 class="new-movie-head">Add a new movie to the list</h3>

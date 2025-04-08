@@ -58,7 +58,7 @@ body {
   font-size: 48px;
   font-weight: 800;
   text-align: center;
-  background: linear-gradient(90deg, #7c4dff, #ff4081);
+  background: linear-gradient(90deg, #ff4d85, #a040ff);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -92,11 +92,12 @@ body {
 
 h2 {
   font-size: 28px;
-  font-weight: 600;
-  color: #333333;
+  font-weight: 700;
+  color: #691787;
   margin-bottom: 24px;
   text-align: center;
 }
+ 
 
 .input-container {
   display: flex;
@@ -117,10 +118,10 @@ h2 {
   transition: all 0.2s ease;
 }
 
-.search-input:focus {
+input:focus {
   outline: none;
-  border-color: #333333;
-  box-shadow: 0 0 0 2px rgba(51, 51, 51, 0.1);
+  box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.25), 0 0 4px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease;
 }
 
 .form-flex {
@@ -147,8 +148,7 @@ input[type="text"] {
 
 input[type="text"]:focus {
   outline: none;
-  border-color: #333333;
-  box-shadow: 0 0 0 2px rgba(51, 51, 51, 0.1);
+   
 }
 
 button {
@@ -196,11 +196,7 @@ button {
   gap: 16px;
 }
 
-.ember-power-select-trigger {
-  border-color: #64a5ed;
-  border-radius: 0;
-}
-
+ 
 .table-container {
   overflow-x: auto;
   background: #ffffff;
@@ -223,8 +219,8 @@ td {
 }
 
 th {
-  background: #f5f5f5;
-  color: #333333;
+  background: #e3f2fd;
+  color: #1976d2;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 13px;
@@ -428,7 +424,7 @@ input[type="checkbox"]:checked::after {
 .power-select {
   width: 250px;
   margin-left: auto;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .ember-power-select-trigger {
@@ -449,7 +445,7 @@ input[type="checkbox"]:checked::after {
 
 .ember-power-select-options {
   margin-left: 200px;
-  max-height: 300px;
+  max-height: 400px;
   overflow-y: auto;
   color: black !important;
 }
@@ -623,8 +619,8 @@ html {
 }
 
 .dark-theme th {
-  background: #252525;
-  color: #e0e0e0;
+  background: #263238;
+  color: #64b5f6;
   border-bottom-color: #333333;
 }
 
@@ -697,6 +693,11 @@ html {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+  margin: auto;
 }
 
 .delete-button:hover {
@@ -779,6 +780,7 @@ button:active {
   align-items: center;
   justify-content: center;
   gap: 16px;
+  margin-bottom: 20px;
 }
 
 .spinner {

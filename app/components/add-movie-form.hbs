@@ -10,6 +10,7 @@
         placeholder="Movie title"
         {{on "input" @updateTitle}}
         value={{@newTitle}}
+        {{did-insert @focusInput}}
       />
     </div>
     
@@ -30,6 +31,7 @@
           id="releaseDate"
           placeholder="Release date"
           value={{@newReleaseDate}}
+          {{on 'click' @toggleCalendar}}
           readonly
         />
         <button type="button" {{on "click" @toggleCalendar}}>
@@ -58,7 +60,7 @@
   
   <div class="form-actions"> 
     <button type="button" {{on "click" @cancel}} {{on-key "Escape" @cancel}}>Cancel</button>
-    <button class="save-btn" type="button" {{on "click" @addMovie}} {{on-key "Enter" @addMovie}}>
+    <button class="save-btn" type="button" {{on "click" @addMovie}} >
       Add Movie
     </button>
   </div>

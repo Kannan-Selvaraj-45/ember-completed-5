@@ -13,6 +13,7 @@
           type="text"
           id="title"
           placeholder="Movie title"
+          {{did-insert this.focusInput}}
           value={{this.title}}
           {{on "input" this.updateTitle}}
         />

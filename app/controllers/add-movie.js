@@ -3,6 +3,8 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { task, timeout } from 'ember-concurrency';
+import { keyResponder, onKey } from 'ember-keyboard';
+@keyResponder
 export default class AddMovieController extends Controller {
   @service router;
   @service movieStore;
@@ -14,6 +16,22 @@ export default class AddMovieController extends Controller {
   @tracked center;
   @tracked isCalendarOpen;
 
+  
+  @action
+  focusInput(element){
+   element.focus();
+  }
+  
+ 
+  
+  @onKey('ArrowRight')
+  moveFocus(){
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('director').focus();
+    })
+  }
+    
+  
   @action
   toggleCalendar() {
     this.isCalendarOpen = !this.isCalendarOpen;
@@ -53,7 +71,8 @@ export default class AddMovieController extends Controller {
   updateDirector(event) {
     this.newDirector = event.target.value;
   }
-
+  
+  @onKey('Enter')
   @action
   addMovie() {
     if (this.newTitle.trim() || this.newDirector.trim()) {
@@ -73,6 +92,7 @@ export default class AddMovieController extends Controller {
     }
   }
    
+  
   @action
   cancel() {
     this.router.transitionTo('movies');

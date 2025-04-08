@@ -3,9 +3,11 @@
   <div class="input-container">
     <input
       type="text"
+      id="search"
       class="search-input"
-      placeholder="Search movies..."
+      placeholder="Type to search movies..."
       {{on "input" @updateSearch}}
+      {{did-insert @focusInput}}
     />
   </div>
 </section>
