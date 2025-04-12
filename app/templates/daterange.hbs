@@ -1,2 +1,65 @@
-{{page-title "Daterange"}}
+{{page-title "Date Range Picker"}}
+<div class="block-container">
+  <div>
+<div class="daterange-container" {{on-key "Escape" this.goBack}}>
+  <div class="daterange-card">
+    <div class="daterange-header">
+      <h2 class="daterange-title">Date Range Selection</h2>
+    </div>
+
+    <div class="daterange-content">
+      <div class="daterange-wrapper">
+        <PowerCalendarRange
+          class="demo-range-calendar-with-pretty-range-ends-yo"
+          @center={{this.center}}
+          @selected={{this.range}}
+          @onSelect={{this.onSelect}}
+          @onCenterChange={{perform this.updateMonth}}
+          as |calendar|
+        >
+
+          <calendar.Nav />
+          <calendar.Days />
+        </PowerCalendarRange>
+      </div>
+
+      <div class="daterange-info">
+        <div class="daterange-dates">
+          <div class="date-box">
+            <h4 class="date-label">Start Date</h4>
+            <div class="date-value">{{format-date
+                this.range.start
+                format="MMMM d, yyyy"
+              }}</div>
+          </div>
+
+          <div class="date-box">
+            <h4 class="date-label">End Date</h4>
+            <div class="date-value">{{format-date
+                this.range.end
+                format="MMMM d, yyyy"
+              }}</div>
+          </div>
+        </div>
+
+        <div class="daterange-summary">
+          <span class="summary-label">Total Days:</span>
+          <span class="day-count">{{this.dayCount}}</span>
+        </div>
+        <div class="scroll-back">
+          <button
+            id="make-btn"
+            class="demo-btn"
+            type="button"
+            {{on "click" this.goToMultipleSelection}}
+          ><span>Take me to multiple select! &#8594;</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+
+
 {{outlet}}

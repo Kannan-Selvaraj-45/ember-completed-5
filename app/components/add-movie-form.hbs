@@ -1,4 +1,4 @@
-<section class="add-section">
+<section class="add-section" {{on-key "Escape" @goBack}}>
   <h3 class="main-title">Add New Movie</h3>
   <div class="form-flex">
     <div class="input-group">
@@ -81,7 +81,11 @@
   </LiquidSpacer>
 </div>
 
-<button id="make-btn" type="button" {{on "click" @scrollInfinite}}><span>Click here to scroll movies!  &#8594;</span></button>
+<div class="making">
+  <button id="make-btn" type="button" {{on "click" @scrollInfinite}}><span>Click here to scroll demo movies!  &#8594;</span></button>
+  <button id="make-btn" type="button" {{on "click" @goToDateRange}}><span>Click here to visit demo range!!!  &#8594;</span></button>
+</div>
+
 </div>
 
 

@@ -45,13 +45,13 @@ export default class BiScrollController extends Controller {
     this.items = [...this.items, ...newItems];
   }
 
-  @action 
-  scrollDynamic(){
+  @action
+  scrollDynamic() {
     this.router.transitionTo('dynamic-content');
   }
 
   @action
-  goBack(){
-    this.router.transitionTo("add-movie")
+  goBack() {
+    this.router.transitionTo('add-movie');
   }
 }

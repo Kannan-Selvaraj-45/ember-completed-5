@@ -26,4 +26,18 @@ export default function () {
     this.use('toLeft', { duration: 500, easing: 'easeInOut' }),
     this.reverse('toRight', { duration: 500, easing: 'easeInOut' }),
   );
+
+  this.transition(
+    this.fromRoute('add-movie'),
+    this.toRoute('daterange'),
+    this.use('toLeft', { duration: 500, easing: 'easeInOut' }),
+    this.reverse('toRight', { duration: 500, easing: 'easeInOut' }),
+  );
+
+  this.transition(
+    this.fromRoute('daterange'),
+    this.toRoute('multipleselect'),
+    this.use('toLeft', { duration: 500, easing: 'easeInOut' }),
+    this.reverse('toRight', { duration: 500, easing: 'easeInOut' }),
+  );
 }

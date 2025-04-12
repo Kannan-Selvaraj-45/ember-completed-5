@@ -20,6 +20,7 @@ export default class EditMovieController extends Controller {
   constructor() {
     super(...arguments);
   }
+
   @action
   focusInput(element) {
     element.focus();

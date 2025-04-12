@@ -18,6 +18,16 @@ export default class AddMovieController extends Controller {
   @tracked showLongMessage;
 
   @action
+  goBack(){
+    this.router.transitionTo('movies')
+  }
+
+  @action
+  goToDateRange() {
+    this.router.transitionTo('daterange');
+  }
+
+  @action
   focusInput(element) {
     element.focus();
   }

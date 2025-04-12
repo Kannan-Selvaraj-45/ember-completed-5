@@ -13,4 +13,5 @@ Router.map(function () {
   this.route('bi-scroll');
   this.route('dynamic-content');
   this.route('daterange');
+  this.route('multipleselect');
 });
