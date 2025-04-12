@@ -1,4 +1,4 @@
-{{page-title "AddMovie"}}
+{{page-title "Add Movie"}}
 <div class="container">
   <AddMovieForm
     @newTitle={{this.newTitle}}
@@ -16,6 +16,10 @@
     @isCalendarOpen={{this.isCalendarOpen}}
     @toggleCalendar={{this.toggleCalendar}}
     @focusInput={{this.focusInput}}
+    @showLongMessage={{this.showLongMessage}}
+    @scrollInfinite={{this.scrollInfinite}}
   />
 </div>
+
+
 {{outlet}}

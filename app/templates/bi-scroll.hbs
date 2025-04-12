@@ -1,0 +1,55 @@
+<h3 class="sub-title">Bi-directional scroll container</h3>
+
+<div class="data-view" {{on-key "Escape" this.goBack}}>
+  <table class="data-header">
+    <thead>
+      <tr>
+        <th class="column-title">Title</th>
+        <th class="column-title">Director</th>
+        <th class="column-title">Watched On</th>
+      </tr>
+    </thead>
+  </table>
+
+  <div class="data-scroller">
+    <VerticalCollection
+      @items={{this.items}}
+      @estimateHeight={{52}}
+      @staticHeight={{true}}
+      @bufferSize={{10}}
+      @firstReached={{this.loadAbove}}
+      @lastReached={{this.loadBelow}}
+      as |item index|
+    >
+      <div class="data-row {{unless item.title 'empty-row'}}">
+        <div style="width: 200px; padding-left: 16px;">
+          {{#if item.title}}
+            {{item.title}}
+          {{else}}
+            <span class="placeholder-text">No title</span>
+          {{/if}}
+        </div>
+        <div style="width: 200px;  padding-left: 14px;">
+          {{#if item.director}}
+            {{item.director}}
+          {{else}}
+            <span class="placeholder-text">No director</span>
+          {{/if}}
+        </div>
+        <div style="width: 200px; padding-left: 30px;">
+          {{#if item.watchedOn}}
+            {{item.watchedOn}}
+          {{else}}
+            <span class="placeholder-text">Not watched</span>
+          {{/if}}
+        </div>
+      </div>
+    </VerticalCollection>
+  </div>
+</div>
+
+<div class="scroll-back">
+  <button id="make-btn" class="demo-btn" type="button" {{on "click" this.scrollDynamic}}>
+    <span>Click here to visit dynamic content VC!  &#8594;</span>
+  </button>
+</div>

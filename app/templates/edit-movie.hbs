@@ -9,6 +9,7 @@
     <h3 class="main-title">Edit Movie</h3>
     <div class="form-flex">
       <div class="input-group">
+        <label for="title">Movie Title</label>
         <input
           type="text"
           id="title"
@@ -19,6 +20,7 @@
         />
       </div>
       <div class="input-group">
+        <label for="director">Director</label>
         <input
           type="text"
           id="director"
@@ -27,37 +29,69 @@
           {{on "input" this.updateDirector}}
         />
       </div>
-      <div class="date-picker-container">
-        <div class="date-input-wrapper">
-          <input
-            type="text"
-            id="releaseDate"
-            placeholder="Release date"
-            value={{this.releaseDate}}
-            readonly
-            {{on "click" this.toggleCalendar}}
-          />
-          <button type="button" {{on "click" this.toggleCalendar}}>
-            📅
-          </button>
-        </div>
-        {{#if this.isCalendarOpen}}
-          <div class="calendar-popup" {{on-click-outside this.toggleCalendar}}>
-            <PowerCalendar
-              @center={{this.center}}
-              @onCenterChange={{perform this.updateMonth}}
-              @selected={{this.selected}}
-              @onSelect={{this.onSelect}}
-              as |calendar|
-            >
-              <div class={{if calendar.loading "loading-spinner-overlay"}}>
-                <calendar.Nav />
-                <calendar.Days />
-              </div>
-            </PowerCalendar>
+      <div class="input-group">
+        <label for="releaseDate">Watched On</label>
+        <div class="date-picker-container">
+          <div class="date-input-wrapper">
+            <input
+              type="text"
+              id="releaseDate"
+              placeholder="Release date"
+              value={{this.releaseDate}}
+              readonly
+              {{on "click" this.toggleCalendar}}
+            />
+            <button type="button" {{on "click" this.toggleCalendar}}>
+              📅
+            </button>
           </div>
-        {{/if}}
+          {{#if this.isCalendarOpen}}
+            <div
+              class="calendar-popup"
+              {{on-click-outside this.toggleCalendar}}
+            >
+              <PowerCalendar
+                @center={{this.center}}
+                @onCenterChange={{perform this.updateMonth}}
+                @selected={{this.selected}}
+                @onSelect={{this.onSelect}}
+                as |calendar|
+              >
+                <div class={{if calendar.loading "loading-spinner-overlay"}}>
+                  <calendar.Nav />
+                  <calendar.Days />
+                </div>
+              </PowerCalendar>
+            </div>
+          {{/if}}
+        </div>
       </div>
+    </div>
+
+    <div id="liquid-spacer-demo">
+      <label>
+        <Input @type="checkbox" @checked={{this.showLongMessage}} />
+        Show Instructions to edit
+      </label>
+
+      <LiquidSpacer @growDuration={{250}}>
+        {{#if this.showLongMessage}}
+          {{#if this.showLongMessage}}
+            <div class="instructions-list">
+              <ul>
+                <li><strong>Title</strong>: Edit the movie’s official name if
+                  needed.</li>
+                <li><strong>Director</strong>: Update the director's name.</li>
+                <li><strong>Date</strong>: Change the watched date.</li>
+                <li><strong>Done?</strong>
+                  Hit "Save Changes" to confirm edits.</li>
+              </ul>
+            </div>
+
+          {{/if}}
+
+        {{/if}}
+      </LiquidSpacer>
     </div>
     <div class="form-actions">
       <button type="button" {{on "click" this.cancel}}>Cancel</button>

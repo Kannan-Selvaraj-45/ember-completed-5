@@ -1,20 +1,26 @@
-<LiquidSpacer @growDuration={{550}}> 
-  <div class="application-container"> 
-    <button type="button" class="theme-toggle" {{on "click" this.toggleTheme}} {{on-key "KeyT" this.toggleTheme}} aria-label="Toggle dark mode">
-     {{#if this.isDarkMode}}🌞{{else}}🌚{{/if}}
-
-    </button>
-    
-    {{outlet}}
-    
-    <div class="flash-messages-container">
-      {{#each this.flashMessages.queue as |flash|}}
-        <div class="flash-message {{flash.type}}" >
-          <p>{{flash.message}}</p>
-          <button class="flash-close-button" type="button" {{on-click-outside (fn this.removeFlashMessage flash)}} {{on "click" (fn this.removeFlashMessage flash)}}>×</button>
-        </div>
-      {{/each}}
-    </div>
+<div class="application-container">
+  <button
+    type="button"
+    class="theme-toggle"
+    {{on "click" this.toggleTheme}}
+    {{on-key "KeyT" this.toggleTheme}}
+    aria-label="Toggle dark mode"
+  >
+    {{#if this.isDarkMode}}☀️{{else}}🌙{{/if}}
+  </button>
+  <LiquidOutlet />
+  <div class="flash-messages-container">
+    {{#each this.flashMessages.queue as |flash|}}
+      <div class="flash-message {{flash.type}}">
+        <p>{{flash.message}}</p>
+        <button
+          class="flash-close-button"
+          type="button"
+          {{on-click-outside (fn this.removeFlashMessage flash) exceptSelector=".list-section"}}
+          {{on "click" (fn this.removeFlashMessage flash)}}
+        >×</button>
+      </div>
+    {{/each}}
   </div>
-</LiquidSpacer>
+</div>
 <BasicDropdownWormhole />

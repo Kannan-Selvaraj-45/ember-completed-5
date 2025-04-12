@@ -1,0 +1,30 @@
+<h3 class="sub-title">Dynamic content VC</h3> 
+ 
+<div class="main" {{on-key "Escape" this.goBack}}>
+  <div class="vertical-collection-container">
+    <VerticalCollection
+      @items={{@model.numbers}}
+      @estimateHeight={{40}}
+      @containerSelector=".vertical-collection-container"
+      @bufferSize={{10}}
+      as |item index|
+    >
+      <DynamicContent
+        @item={{item.number}}
+        @index={{index}}
+        @isDynamic={{true}}
+        @text={{item.text}}
+      />
+    </VerticalCollection>
+    
+  </div>
+  
+</div>
+ 
+ <div class="scroll-back">
+    <button id="make-btn" class="demo-btn" type="button" {{on "click" this.goHome}}><span>Take me back to movies!  &#8594;</span></button>
+ 
+ </div>
+
+ 
+ 

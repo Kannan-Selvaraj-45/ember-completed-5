@@ -11,7 +11,7 @@ export default class MoviesController extends Controller {
   @tracked searched = '';
   @tracked selectedMovies = [];
   @tracked destination = 'Delete Options';
-
+  @tracked showText = true;
   options = ['All', 'Selected'];
 
   @action
@@ -57,11 +57,11 @@ export default class MoviesController extends Controller {
     }
   }
 
-  @task({ drop: true })
+  @task({ keepLatest: true })
   *deleteMovie(id) {
-    yield timeout(100);
+    yield timeout(1000);
     this.movieStore.deleteMovie(id);
-    this.flashMessages.danger('Movie deleted Successfully!');
+    this.flashMessages.danger(`Movie having id ${id} deleted!`);
   }
 
   @task({ drop: true })

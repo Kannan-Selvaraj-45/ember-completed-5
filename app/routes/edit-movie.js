@@ -6,7 +6,7 @@ export default class EditMovieRoute extends Route {
   @service router;
   model(params) {
     const movie = this.movieStore.movies.find(
-      (m) => m.id === parseInt(params.id)
+      (m) => m.id === parseInt(params.id),
     );
     if (!movie) {
       this.flashMessages.danger('Movie not found');

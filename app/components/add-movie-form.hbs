@@ -2,6 +2,7 @@
   <h3 class="main-title">Add New Movie</h3>
   <div class="form-flex">
     <div class="input-group">
+      <label for="title">Movie Title</label>
       <input
         type="text"
         id="title"
@@ -12,6 +13,7 @@
       />
     </div>
     <div class="input-group">
+      <label for="director">Director</label>
       <input
         type="text"
         id="director"
@@ -20,44 +22,74 @@
         value={{@newDirector}}
       />
     </div>
-    <div class="date-picker-container">
-      <div class="date-input-wrapper">
-        <input
-          type="text"
-          id="releaseDate"
-          placeholder="Release date"
-          value={{@newReleaseDate}}
-          {{on 'click' @toggleCalendar}}
-          readonly
-        />
-        <button type="button" {{on "click" @toggleCalendar}}>
-          📅
-        </button>
-      </div>
-
-      {{#if @isCalendarOpen}}
-        <div class="calendar-popup" {{on-click-outside @toggleCalendar}}>
-          <PowerCalendar
-            @center={{@center}}
-            @onCenterChange={{perform @updateMonth}}
-            @selected={{@selected}}
-            @onSelect={{@onSelect}}
-            as |calendar|
-          >
-            <div class={{if calendar.loading "loading-spinner-overlay"}}>
-              <calendar.Nav />
-              <calendar.Days />
-            </div>
-          </PowerCalendar>
+    <div class="input-group">
+      <label for="releaseDate">Watched On</label>
+      <div class="date-picker-container">
+        <div class="date-input-wrapper">
+          <input
+            type="text"
+            id="releaseDate"
+            placeholder="Watched date"
+            value={{@newReleaseDate}}
+            {{on 'click' @toggleCalendar}}
+            readonly
+          />
+          <button type="button" {{on "click" @toggleCalendar}}>
+            📅
+          </button>
         </div>
-      {{/if}}
+
+        {{#if @isCalendarOpen}}
+          <div class="calendar-popup" {{on-click-outside @toggleCalendar}}>
+            <PowerCalendar
+              @center={{@center}}
+              @onCenterChange={{perform @updateMonth}}
+              @selected={{@selected}}
+              @onSelect={{@onSelect}}
+              as |calendar|
+            >
+              <div class={{if calendar.loading "loading-spinner-overlay"}}>
+                <calendar.Nav />
+                <calendar.Days />
+              </div>
+            </PowerCalendar>
+          </div>
+        {{/if}}
+      </div>
     </div>
   </div>
   
-  <div class="form-actions"> 
+ 
+<div class="make"> 
+<div id="liquid-spacer-demo"> 
+  <label>
+    <Input @type="checkbox" @checked={{@showLongMessage}} />
+    Show Instructions to Add
+  </label>
+
+  <LiquidSpacer @growDuration={{250}}>
+    {{#if @showLongMessage}}
+      <div class="instructions-list">
+        <ul>
+          <li><strong>Title</strong>: Add the movie's official name.</li>
+          <li><strong>Director</strong>: Who directed it?</li>
+          <li><strong>Date</strong>: Pick the watched day.</li>
+          <li><strong>Done?</strong> Hit "Add Movie" to finish.</li>
+        </ul>
+      </div>
+    {{/if}}
+  </LiquidSpacer>
+</div>
+
+<button id="make-btn" type="button" {{on "click" @scrollInfinite}}><span>Click here to scroll movies!  &#8594;</span></button>
+</div>
+
+
+ <div class="form-actions"> 
     <button type="button" {{on "click" @cancel}} {{on-key "Escape" @cancel}}>Cancel</button>
     <button class="save-btn" type="button" {{on "click" @addMovie}} >
       Add Movie
     </button>
   </div>
+
 </section>

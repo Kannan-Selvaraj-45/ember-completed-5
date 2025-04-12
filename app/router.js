@@ -10,4 +10,7 @@ Router.map(function () {
   this.route('movies', { path: '/' });
   this.route('add-movie');
   this.route('edit-movie', { path: '/edit-movie/:id' });
+  this.route('bi-scroll');
+  this.route('dynamic-content');
+  this.route('daterange');
 });

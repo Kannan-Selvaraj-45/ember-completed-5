@@ -15,13 +15,18 @@ export default class AddMovieController extends Controller {
   @tracked selected = new Date();
   @tracked center;
   @tracked isCalendarOpen;
+  @tracked showLongMessage;
 
-  
   @action
-  focusInput(element){
-   element.focus();
-  }    
-  
+  focusInput(element) {
+    element.focus();
+  }
+
+  @action
+  scrollInfinite() {
+    this.router.transitionTo('bi-scroll');
+  }
+
   @action
   toggleCalendar() {
     this.isCalendarOpen = !this.isCalendarOpen;
@@ -34,7 +39,6 @@ export default class AddMovieController extends Controller {
     this.isCalendarOpen = !this.isCalendarOpen;
   }
 
-
   formatDate(date) {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -43,11 +47,10 @@ export default class AddMovieController extends Controller {
   }
 
   @task({ drop: true })
-  *updateMonth({ date }) { 
+  *updateMonth({ date }) {
     yield timeout(100);
-    this.center = date; 
+    this.center = date;
   }
-  
 
   @action
   updateTitle(event) {
@@ -58,7 +61,7 @@ export default class AddMovieController extends Controller {
   updateDirector(event) {
     this.newDirector = event.target.value;
   }
-  
+
   @onKey('Enter')
   @action
   addMovie() {
@@ -78,8 +81,7 @@ export default class AddMovieController extends Controller {
       this.flashMessages.warning('Data is Insufficient!');
     }
   }
-   
-  
+
   @action
   cancel() {
     this.router.transitionTo('movies');
