@@ -10,11 +10,23 @@ export default class DynamicContentRoute extends Route {
       'Another medium block. More rows, more fun!',
     ];
 
-    return {
-      numbers: Array.from({ length: 1000 }, (_, i) => ({
+
+    const numbers = [];
+    for (let i = 0; i < 1000; i++) {
+      numbers.push({
         number: i + 1,
         text: texts[Math.floor(Math.random() * texts.length)],
-      })),
-    };
+      });
+    }
+
+    return { numbers };
+    
+
+    // return {
+    //   numbers: Array.from({ length: 1000 }, (_, i) => ({
+    //     number: i + 1,
+    //     text: texts[Math.floor(Math.random() * texts.length)],
+    //   })),
+    // };
   }
 }

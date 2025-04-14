@@ -11,13 +11,13 @@ export default class DaterangeController extends Controller {
   @tracked center = new Date();
   @tracked range = [];
 
-  @action 
-  goBack(){
-    this.router.transitionTo("add-movie")
+  @action
+  goBack() {
+    this.router.transitionTo('add-movie');
   }
   @action
-  goToMultipleSelection(){
-    this.router.transitionTo('multipleselect')
+  goToMultipleSelection() {
+    this.router.transitionTo('multipleselect');
   }
   @action
   onSelect({ date }) {

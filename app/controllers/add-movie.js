@@ -18,8 +18,8 @@ export default class AddMovieController extends Controller {
   @tracked showLongMessage;
 
   @action
-  goBack(){
-    this.router.transitionTo('movies')
+  goBack() {
+    this.router.transitionTo('movies');
   }
 
   @action
