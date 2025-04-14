@@ -1,66 +1,68 @@
-{{page-title "Multiple Date Selection"}}                                                                                                                                                                  
-<div class="block-container auto-size">                                                                                                                                                                 
-  <div>                                                                                                                                                                 
-    <div class="multiple-container" {{on-key "Escape" this.goBack}}>                                                                                                                                                                  
-      <div class="multiple-card">                                                                                                                                                                 
-        <div class="multiple-header">                                                                                                                                                                 
-          <h2 class="multiple-title">Multiple Date Selection</h2>                                                                                                                                                                 
-          <p class="multiple-description">Select multiple non-consecutive dates</p>                                                                                                                                                                 
-        </div>                                                                                                                                                                  
-        <div class="multiple-content">                                                                                                                                                                  
-          <div class="multiple-wrapper">                                                                                                                                                                  
-            <PowerCalendarMultiple                                                                                                                                                                  
-              @center={{this.center}}                                                                                                                                                                 
-              @selected={{this.collection}}                                                                                                                                                                 
-              @onSelect={{this.onSelect}}                                                                                                                                                                 
-              @onCenterChange={{perform this.updateMonth}}                                                                                                                                                                  
-              as |calendar|                                                                                                                                                                 
-            >                                                                                                                                                                 
-              <calendar.Nav />                                                                                                                                                                  
-              <calendar.Days />                                                                                                                                                                 
-            </PowerCalendarMultiple>                                                                                                                                                                  
-          </div>                                                                                                                                                                  
-          <div class="multiple-info">                                                                                                                                                                 
-            <div class="selected-dates-header">                                                                                                                                                                 
-              <h4 class="dates-label">Selected Dates</h4>                                                                                                                                                                 
-              <span class="date-count">{{this.selectedDatesCount}}                                                                                                                                                                  
-                selected</span>                                                                                                                                                                 
-            </div>                                                                                                                                                                  
-            <div class="selected-dates-list">                                                                                                                                                                 
-              {{#if this.hasSelectedDates}}                                                                                                                                                                 
-                <ul class="dates-list">                                                                                                                                                                 
-                  {{#each this.formattedSelectedDates as |date|}}                                                                                                                                                                 
-                    <li class="date-item">                                                                                                                                                                  
-                      <span class="date-text">{{date}}</span>                                                                                                                                                                 
-                      <button                                                                                                                                                                 
-                        type="button"                                                                                                                                                                 
-                        class="date-remove-btn"                                                                                                                                                                 
-                        {{on "click" (fn this.removeDate date)}}                                                                                                                                                                  
-                      >                                                                                                                                                                 
-                        x                                                                                                                                                                 
-                      </button>                                                                                                                                                                 
-                    </li>                                                                                                                                                                 
-                  {{/each}}                                                                                                                                                                 
-                </ul>                                                                                                                                                                 
-              {{else}}                                                                                                                                                                  
-                <p class="no-dates-message">No dates selected. Click on dates in                                                                                                                                                                  
-                  the calendar to select them.</p>                                                                                                                                                                  
-              {{/if}}                                                                                                                                                                 
-            </div>                                                                                                                                                                  
-            <div class="multiple-actions">                                                                                                                                                                  
-              <button                                                                                                                                                                 
-                type="button"                                                                                                                                                                 
-                class="clear-btn"                                                                                                                                                                 
-                {{on "click" this.clearDates}}                                                                                                                                                                  
-                disabled={{not this.hasSelectedDates}}                                                                                                                                                                  
-              >                                                                                                                                                                 
-                Clear All                                                                                                                                                                 
-              </button>                                                                                                                                                                 
-            </div>                                                                                                                                                                  
-          </div>                                                                                                                                                                  
-        </div>                                                                                                                                                                  
-      </div>                                                                                                                                                                  
-    </div>                                                                                                                                                                  
-  </div>                                                                                                                                                                  
-</div>                                                                                                                                                                  
-                                                                                                                                                                                                
+{{page-title "Multiple Date Selection"}}
+<div class="auto-size">
+  <div class="block-container">
+    <div>
+      <div class="multiple-container" {{on-key "Escape" this.goBack}}>
+        <div class="multiple-card">
+          <div class="multiple-header">
+            <h2 class="multiple-title">Multiple Date Selection</h2>
+            <p class="multiple-description">Select multiple non-consecutive
+              dates</p>
+          </div>
+          <div class="multiple-content">
+            <div class="multiple-wrapper">
+              <PowerCalendarMultiple
+                @center={{this.center}}
+                @selected={{this.collection}}
+                @onSelect={{this.onSelect}}
+                @onCenterChange={{perform this.updateMonth}}
+                as |calendar|
+              >
+                <calendar.Nav />
+                <calendar.Days />
+              </PowerCalendarMultiple>
+            </div>
+            <div class="multiple-info">
+              <div class="selected-dates-header">
+                <h4 class="dates-label">Selected Dates</h4>
+                <span class="date-count">{{this.selectedDatesCount}}
+                  selected</span>
+              </div>
+              <div class="selected-dates-list">
+                {{#if this.hasSelectedDates}}
+                  <ul class="dates-list">
+                    {{#each this.formattedSelectedDates as |date|}}
+                      <li class="date-item">
+                        <span class="date-text">{{date}}</span>
+                        <button
+                          type="button"
+                          class="date-remove-btn"
+                          {{on "click" (fn this.removeDate date)}}
+                        >
+                          x
+                        </button>
+                      </li>
+                    {{/each}}
+                  </ul>
+                {{else}}
+                  <p class="no-dates-message">No dates selected. Click on dates
+                    in the calendar to select them.</p>
+                {{/if}}
+              </div>
+              <div class="multiple-actions">
+                <button
+                  type="button"
+                  class="clear-btn"
+                  {{on "click" this.clearDates}}
+                  disabled={{not this.hasSelectedDates}}
+                >
+                  Clear All
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
