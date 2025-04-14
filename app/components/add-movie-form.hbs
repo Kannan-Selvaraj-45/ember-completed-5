@@ -80,15 +80,19 @@
       </LiquidSpacer>
     </div>
 
-    <div class="making">
-      <button id="make-btn" type="button" {{on "click" @goToDateRange}}><span
-        >Click here to visit demo range!! &#8594;</span></button>
-      <button id="make-btn" type="button" {{on "click" @goToGroupSelect}}><span
-        >Click here to visit demo select!! &#8594;</span></button>
-      <button id="make-btn" type="button" {{on "click" @scrollInfinite}}><span
-        >Click here to scroll demo movies  &#8594;</span></button>
+  <div class="card-container">
+  <button class="link-button" type="button" {{on "click" @goToDateRange}}>
+    Click here to visit demo range!  →
+  </button>
+  <button class="link-button" type="button" {{on "click" @goToGroupSelect}}>
+    Click here to visit demo select!  →
+  </button>
+  <button class="link-button" type="button" {{on "click" @scrollInfinite}}>
+    Click here to scroll movies! →
+  </button>
+</div>
 
-    </div>
+
 
   </div>
 

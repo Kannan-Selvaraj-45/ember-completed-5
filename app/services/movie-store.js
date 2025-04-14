@@ -2,6 +2,7 @@ import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
+import {task,timeout} from 'ember-concurrency'
 
 export default class MovieStoreService extends Service {
   @service flashMessages;
@@ -118,8 +119,8 @@ export default class MovieStoreService extends Service {
     },
   ];
 
-  @action
-  addMovie(title, director, releaseDate) {
+  @task({drop:true})
+  *addMovie(title, director, releaseDate) {
     let newId = this.movies.length
       ? this.movies[this.movies.length - 1].id + 1
       : 1;
@@ -128,8 +129,9 @@ export default class MovieStoreService extends Service {
 
     // console.log('Movie added:', { id: newId, title, director, releaseDate });
     // console.log('Current movies:', this.movies);
+    yield timeout(500)
     this.flashMessages.success('New movie added Successfully!');
-    return true;
+     
   }
 
   @action

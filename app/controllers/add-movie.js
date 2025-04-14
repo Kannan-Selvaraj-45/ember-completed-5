@@ -82,7 +82,7 @@ export default class AddMovieController extends Controller {
   @action
   addMovie() {
     if (this.newTitle.trim() || this.newDirector.trim()) {
-      this.movieStore.addMovie(
+      this.movieStore.addMovie.perform(
         this.newTitle,
         this.newDirector,
         this.newReleaseDate,
