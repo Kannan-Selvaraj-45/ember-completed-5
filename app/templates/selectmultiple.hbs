@@ -1,0 +1,53 @@
+{{page-title "Select Multiple"}}
+
+<div class="select-container" {{on-key "Escape" this.goBack}}>
+  <div class="select-card">
+    <div class="select-header">
+      <h2 class="select-title">Multiple Selection</h2>
+      <p class="select-description">Select multiple options from the dropdown</p>
+    </div>
+    
+    <div class="select-content">
+      <div class="select-field-container">
+        <label for="multiple-select" class="select-label">Names</label>
+        <div class="select-wrapper">
+          <PowerSelectMultiple
+            @selected={{this.name}}
+            @options={{this.names}}
+            @onChange={{fn (mut this.name)}}
+            @placeholder="Select some names..."
+            @searchEnabled={{true}}
+            @triggerClass="custom-power-select-multiple-trigger"
+            @dropdownClass="custom-power-select-dropdown"
+            as |name|
+          >
+            {{name}}
+          </PowerSelectMultiple>
+        </div>
+      </div>
+      
+      <div class="selection-info">
+        <div class="info-header">
+          <h4 class="info-label">Selected Names</h4>
+          {{#if this.selectedCount}}
+            <span class="selection-count">{{this.selectedCount}} selected</span>
+          {{/if}}
+        </div>
+        
+        <div class="selected-values-container">
+          {{#if this.hasSelections}}
+            <ul class="selected-values-list">
+              {{#each this.name as |selectedName|}}
+                <li class="selected-value-item">{{selectedName}}</li>
+              {{/each}}
+            </ul>
+          {{else}}
+            <div class="no-selection">No names selected</div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{outlet}}

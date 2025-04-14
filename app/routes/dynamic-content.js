@@ -10,7 +10,6 @@ export default class DynamicContentRoute extends Route {
       'Another medium block. More rows, more fun!',
     ];
 
-
     const numbers = [];
     for (let i = 0; i < 1000; i++) {
       numbers.push({
@@ -20,7 +19,6 @@ export default class DynamicContentRoute extends Route {
     }
 
     return { numbers };
-    
 
     // return {
     //   numbers: Array.from({ length: 1000 }, (_, i) => ({

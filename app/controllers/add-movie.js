@@ -17,6 +17,12 @@ export default class AddMovieController extends Controller {
   @tracked isCalendarOpen;
   @tracked showLongMessage;
 
+
+  @action
+  goToGroupSelect(){
+    this.router.transitionTo('groupselect')
+  }
+
   @action
   goBack() {
     this.router.transitionTo('movies');

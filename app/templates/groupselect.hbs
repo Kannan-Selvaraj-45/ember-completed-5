@@ -1,0 +1,53 @@
+{{page-title "Group Select"}}
+
+<div class="select-container" {{on-key "Escape" this.goBack}}>
+  <div class="select-card">
+    <div class="select-header">
+      <h2 class="select-title">Grouped Selection</h2>
+      <p class="select-description">Select an option from grouped categories</p>
+    </div>
+    
+    <div class="select-content">
+      <div class="select-field-container">
+        <label for="group-select" class="select-label">Number</label>
+        <div class="select-wrapper">
+          <PowerSelect
+            @options={{this.groupedNumbers}}
+            @selected={{this.number}}
+            @onChange={{fn (mut this.number)}}
+            @placeholder="Select a number..."
+      
+            as |num|
+          >
+            {{num}}
+          </PowerSelect>
+        </div>
+      </div>
+      
+      <div class="selection-info">
+        <div class="info-header">
+          <h4 class="info-label">Selected Value</h4>
+        </div>
+        
+        <div class="selected-value-container">
+          {{#if this.number}}
+            <div class="selected-value">{{this.number}}</div>
+          {{else}}
+            <div class="no-selection">No value selected</div>
+          {{/if}}
+        </div>
+
+        <div class="scroll-back">
+          <button
+            id="make-btn"
+            class="demo-btn"
+            type="button"
+            {{on "click" this.goToSelectMultiple}}
+          ><span>Take me to Select multiple ! &#8594;</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{outlet}}

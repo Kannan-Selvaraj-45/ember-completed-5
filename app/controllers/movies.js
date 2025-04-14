@@ -59,7 +59,7 @@ export default class MoviesController extends Controller {
 
   @task({ keepLatest: true })
   *deleteMovie(id) {
-    yield timeout(1000);
+    yield timeout(100);
     this.movieStore.deleteMovie(id);
     this.flashMessages.danger(`Movie having id ${id} deleted!`);
   }

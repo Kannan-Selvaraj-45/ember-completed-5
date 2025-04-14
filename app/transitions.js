@@ -40,4 +40,20 @@ export default function () {
     this.use('toLeft', { duration: 500, easing: 'easeInOut' }),
     this.reverse('toRight', { duration: 500, easing: 'easeInOut' }),
   );
+
+
+
+  this.transition(
+    this.fromRoute('add-movie'),
+    this.toRoute('groupselect'),
+    this.use('toLeft', { duration: 500, easing: 'easeInOut' }),
+    this.reverse('toRight', { duration: 500, easing: 'easeInOut' }),
+  );
+
+  this.transition(
+    this.fromRoute('groupselect'),
+    this.toRoute('selectmultiple'),
+    this.use('toLeft', { duration: 500, easing: 'easeInOut' }),
+    this.reverse('toRight', { duration: 500, easing: 'easeInOut' }),
+  );
 }

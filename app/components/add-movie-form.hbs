@@ -31,7 +31,7 @@
             id="releaseDate"
             placeholder="Watched date"
             value={{@newReleaseDate}}
-            {{on 'click' @toggleCalendar}}
+            {{on "click" @toggleCalendar}}
             readonly
           />
           <button type="button" {{on "click" @toggleCalendar}}>
@@ -58,40 +58,47 @@
       </div>
     </div>
   </div>
-  
- 
-<div class="make"> 
-<div id="liquid-spacer-demo"> 
-  <label>
-    <Input @type="checkbox" @checked={{@showLongMessage}} />
-    Show Instructions to Add
-  </label>
 
-  <LiquidSpacer @growDuration={{250}}>
-    {{#if @showLongMessage}}
-      <div class="instructions-list">
-        <ul>
-          <li><strong>Title</strong>: Add the movie's official name.</li>
-          <li><strong>Director</strong>: Who directed it?</li>
-          <li><strong>Date</strong>: Pick the watched day.</li>
-          <li><strong>Done?</strong> Hit "Add Movie" to finish.</li>
-        </ul>
-      </div>
-    {{/if}}
-  </LiquidSpacer>
-</div>
+  <div class="make">
+    <div id="liquid-spacer-demo">
+      <label>
+        <Input @type="checkbox" @checked={{@showLongMessage}} />
+        Show Instructions to Add
+      </label>
 
-<div class="making">
-  <button id="make-btn" type="button" {{on "click" @scrollInfinite}}><span>Click here to scroll demo movies!  &#8594;</span></button>
-  <button id="make-btn" type="button" {{on "click" @goToDateRange}}><span>Click here to visit demo range!!!  &#8594;</span></button>
-</div>
+      <LiquidSpacer @growDuration={{250}}>
+        {{#if @showLongMessage}}
+          <div class="instructions-list">
+            <ul>
+              <li><strong>Title</strong>: Add the movie's official name.</li>
+              <li><strong>Director</strong>: Who directed it?</li>
+              <li><strong>Date</strong>: Pick the watched day.</li>
+              <li><strong>Done?</strong> Hit "Add Movie" to finish.</li>
+            </ul>
+          </div>
+        {{/if}}
+      </LiquidSpacer>
+    </div>
 
-</div>
+    <div class="making">
+      <button id="make-btn" type="button" {{on "click" @goToDateRange}}><span
+        >Click here to visit demo range!! &#8594;</span></button>
+      <button id="make-btn" type="button" {{on "click" @goToGroupSelect}}><span
+        >Click here to visit demo select!! &#8594;</span></button>
+      <button id="make-btn" type="button" {{on "click" @scrollInfinite}}><span
+        >Click here to scroll demo movies  &#8594;</span></button>
 
+    </div>
 
- <div class="form-actions"> 
-    <button type="button" {{on "click" @cancel}} {{on-key "Escape" @cancel}}>Cancel</button>
-    <button class="save-btn" type="button" {{on "click" @addMovie}} >
+  </div>
+
+  <div class="form-actions">
+    <button
+      type="button"
+      {{on "click" @cancel}}
+      {{on-key "Escape" @cancel}}
+    >Cancel</button>
+    <button class="save-btn" type="button" {{on "click" @addMovie}}>
       Add Movie
     </button>
   </div>
