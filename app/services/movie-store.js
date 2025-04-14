@@ -118,7 +118,6 @@ export default class MovieStoreService extends Service {
       releaseDate: '2016-10-21',
     },
   ];
-
   @task({drop:true})
   *addMovie(title, director, releaseDate) {
     let newId = this.movies.length
@@ -126,14 +125,11 @@ export default class MovieStoreService extends Service {
       : 1;
 
     this.movies = [...this.movies, { id: newId, title, director, releaseDate }];
-
     // console.log('Movie added:', { id: newId, title, director, releaseDate });
     // console.log('Current movies:', this.movies);
     yield timeout(500)
     this.flashMessages.success('New movie added Successfully!');
-     
   }
-
   @action
   deleteMovie(id) {
     this.movies = this.movies.filter((movie) => movie.id !== id);

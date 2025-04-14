@@ -8,13 +8,14 @@
     </div>
 
     <div class="daterange-content">
-      <div class="daterange-wrapper">
+      <div class="daterange-wrapper" >
         <PowerCalendarRange
           class="demo-range-calendar-with-pretty-range-ends-yo"
           @center={{this.center}}
           @selected={{this.range}}
           @onSelect={{this.onSelect}}
           @onCenterChange={{perform this.updateMonth}}
+          
           as |calendar|
         >
 
