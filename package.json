@@ -34,11 +34,13 @@
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "@html-next/vertical-collection": "^4.0.2",
+    "bootstrap": "^5.3.5",
     "broccoli-asset-rev": "^3.0.0",
     "concurrently": "^8.2.2",
     "date-fns": "^4.1.0",
     "ember-auto-import": "^2.7.3",
     "ember-basic-dropdown": "^8.6.0",
+    "ember-bootstrap": "^6.5.0",
     "ember-cli": "~5.9.0",
     "ember-cli-app-version": "^6.0.1",
     "ember-cli-babel": "^8.2.0",
@@ -95,9 +97,5 @@
   },
   "ember": {
     "edition": "octane"
-  },
-  "dependencies": {
-    "bootstrap": "^5.3.3",
-    "ember-bootstrap": "^6.5.0"
   }
 }

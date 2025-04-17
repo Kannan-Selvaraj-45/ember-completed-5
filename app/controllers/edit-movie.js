@@ -23,8 +23,9 @@ export default class EditMovieController extends Controller {
 
   @action
   focusInput(element) {
-    element.focus();
+    element.focus();    
   }
+
   setupCalendar() {
     if (this.releaseDate) {
       const [year, month, day] = this.releaseDate.split('-');

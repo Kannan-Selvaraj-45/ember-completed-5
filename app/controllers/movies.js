@@ -10,9 +10,11 @@ export default class MoviesController extends Controller {
   @service flashMessages;
   @tracked searched = '';
   @tracked selectedMovies = [];
-  @tracked destination = 'Delete Options';
   @tracked showText = true;
-  options = ['All', 'Selected'];
+  @tracked showAddColumnModal;
+  @tracked newColumnTitle='';
+  @tracked destination = 'Customize Table';
+  options = ['Add column','Add row','Delete all', 'Delete selected'];
 
   @action
   focusInput(element) {
@@ -23,11 +25,37 @@ export default class MoviesController extends Controller {
   chooseDestination(selectedOption) {
     this.destination = selectedOption;
 
-    if (selectedOption === 'Selected') {
+    if (selectedOption === 'Delete selected') {
       this.deleteSelected.perform();
-    } else if (selectedOption === 'All') {
+    } else if (selectedOption === 'Delete all') {
       this.deleteAll.perform();
+    }else if (selectedOption === 'Add column') {
+      this.showAddColumnModal = true;
     }
+  }
+
+  @action
+  handleTitle(event){
+    this.newColumnTitle=event.target.value;
+  }
+
+  @action
+  addNewColumn(){
+    this.movieStore.addColumn(this.newColumnTitle);
+    this.showAddColumnModal = false;
+    this.destination="Customize Table";
+    this.flashMessages.success(`Column "${this.newColumnTitle}" added successfully!`);
+  }
+
+  @action
+  closeAddColumnModal() {
+    this.showAddColumnModal = false;
+    this.newColumnTitle='';
+    this.destination = 'Customize Table';
+  }
+
+  get tableHeaders(){
+    return this.movieStore.headers;
   }
 
   get filteredMovies() {
@@ -50,10 +78,9 @@ export default class MoviesController extends Controller {
   toggleSelect(movieId, event) {
     if (event.target.checked) {
       this.selectedMovies = [...this.selectedMovies, movieId];
-      // console.log(this.selectedMovies)
     } else {
       this.selectedMovies = this.selectedMovies.filter((id) => id !== movieId);
-      // console.log(this.selectedMovies)
+ 
     }
   }
 
@@ -68,12 +95,12 @@ export default class MoviesController extends Controller {
   *deleteSelected() {
     if (this.movieStore.movies.length === 0) {
       this.flashMessages.warning('No movies available to delete!');
-      this.destination = 'Delete Options';
+      this.destination = 'Customize Table';
       return;
     }
     if (this.selectedMovies.length === 0) {
       this.flashMessages.warning('Select movies to delete!');
-      this.destination = 'Delete Options';
+      this.destination = 'Customize Table';
       return;
     }
     if (this.deleteSelected.isRunning) {
@@ -85,7 +112,7 @@ export default class MoviesController extends Controller {
       this.movieStore.deleteMovie(id);
     });
     this.selectedMovies = [];
-    this.destination = 'Delete Options';
+    this.destination = 'Customize Table';
     this.flashMessages.danger('Movies deleted!');
   }
 
@@ -107,14 +134,14 @@ export default class MoviesController extends Controller {
       this.flashMessages.warning('No movies available to delete!');
     }
 
-    this.destination = 'Delete Options';
+    this.destination = 'Customize Table';
   }
 
   @action
   undoAll() {
     this.deleteAll.cancelAll();
     this.deleteSelected.cancelAll();
-    this.destination = 'Delete Options';
+    this.destination = 'Customize Table';
   }
 
   @action

@@ -117,7 +117,11 @@ export default class MovieStoreService extends Service {
       director: 'Barry Jenkins',
       releaseDate: '2016-10-21',
     },
+    
   ];
+
+  @tracked headers=['SELECT','ID','TITLE','DIRECTOR','WATCHED ON','EDIT','ACTIONS']
+
   @task({drop:true})
   *addMovie(title, director, releaseDate) {
     let newId = this.movies.length
@@ -141,5 +145,10 @@ export default class MovieStoreService extends Service {
       movie.id === id ? { ...movie, title, director, releaseDate } : movie,
     );
     this.flashMessages.info('Movie updated Successfully!');
+  }
+
+  @action
+  addColumn(title){
+    this.headers=[...this.headers,title];
   }
 }
